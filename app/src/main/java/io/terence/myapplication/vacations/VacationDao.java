@@ -21,6 +21,7 @@ public interface  VacationDao {
 
     @Query("SELECT * FROM vacations")
     List<Vacation> getAllEntities();
-
+    @Query("SELECT * FROM vacations LIMIT :limit OFFSET :offset")
+    Vacation[] loadAllVacationsByPage(int limit,int offset);
     // Other queries and operations
 }

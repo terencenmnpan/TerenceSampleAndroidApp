@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TerenceVacationApp</string>
+    <string name="title_activity_vacation_detail_host">VacationDetailHostActivity</string>
+    <string name="title_vacation_list">Vacation</string>
+    <string name="title_vacation_detail">Vacation Detail</string>
 </resources>
