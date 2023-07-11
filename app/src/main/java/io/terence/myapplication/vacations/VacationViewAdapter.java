@@ -29,7 +29,7 @@ public class VacationViewAdapter extends RecyclerView.Adapter<VacationViewHolder
     @Override
     public void onBindViewHolder(@NonNull VacationViewHolder holder, int position) {
         Vacation vacation = vacations.get(position);
-        holder.vacationViewId.setText(vacation.getId());
+        holder.vacationViewId.setText(Integer.toString(vacation.getId()));
         holder.vacationViewName.setText(vacation.getTitle());
 
     }
