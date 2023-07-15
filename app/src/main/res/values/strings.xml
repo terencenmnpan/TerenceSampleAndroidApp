@@ -13,4 +13,5 @@
     <string name="vacation_end_date">Vacation End Date</string>
     <string name="name_of_vacation">Name of Vacation</string>
     <string name="vacation_name">Vacation Name</string>
+    <string name="edit_vacation">Edit Vacation</string>
 </resources>
