@@ -12,15 +12,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="51dp"
-        android:text="Add Vacation"
+        android:onClick="addVacation"
+        android:text="@string/add_vacation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="415dp"
-        android:layout_height="536dp"
-        android:layout_marginTop="95dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="112dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_vacation_btn" />
 
@@ -30,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="16dp"
-        android:text="Remove Vacation"
+        android:text="@string/remove_vacation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,4 +3,14 @@
     <string name="title_activity_vacation_detail_host">VacationDetailHostActivity</string>
     <string name="title_vacation_list">Vacation</string>
     <string name="title_vacation_detail">Vacation Detail</string>
+    <string name="add_vacation">Add Vacation</string>
+    <string name="remove_vacation">Remove Vacation</string>
+    <string name="save">Save</string>
+    <string name="new_vacation">New Vacation</string>
+    <string name="name_of_accommodation">Name of Accommodation</string>
+    <string name="accommodation">Accommodation</string>
+    <string name="vacation_start_date">Vacation Start Date</string>
+    <string name="vacation_end_date">Vacation End Date</string>
+    <string name="name_of_vacation">Name of Vacation</string>
+    <string name="vacation_name">Vacation Name</string>
 </resources>

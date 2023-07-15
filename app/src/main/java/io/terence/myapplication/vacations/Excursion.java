@@ -9,21 +9,21 @@ import java.time.LocalDate;
 
 @Entity(tableName = "excursions")
 public class Excursion {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate=true)
     @NonNull
     @ColumnInfo(name = "id")
-    private String id;
+    private int id;
 
     @ColumnInfo(name = "title")
     private String title;
     private LocalDate date;
 
     @NonNull
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(@NonNull String id) {
+    public void setId(@NonNull int id) {
         this.id = id;
     }
 

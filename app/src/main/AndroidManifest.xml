@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TerenceVacationApp"
         tools:targetApi="31">
         <activity
+            android:name=".vacations.activities.NewVacation"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

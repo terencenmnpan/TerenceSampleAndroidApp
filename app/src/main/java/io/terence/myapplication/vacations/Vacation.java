@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Entity(tableName = "vacations")
 public class Vacation {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate=true)
     @NonNull
     @ColumnInfo(name = "id")
     private int id;

@@ -12,8 +12,7 @@ public class VacationApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "app_database")
-                .build();
+        appDatabase = AppDatabase.getInstance(getApplicationContext());
     }
 
     public AppDatabase getDatabase() {

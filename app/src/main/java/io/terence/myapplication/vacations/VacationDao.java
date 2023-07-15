@@ -8,6 +8,8 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+
 @Dao
 public interface  VacationDao {
     @Insert
