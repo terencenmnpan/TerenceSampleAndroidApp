@@ -7,7 +7,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import io.terence.myapplication.vacations.Excursion;
+import io.terence.myapplication.excursions.Excursion;
+import io.terence.myapplication.excursions.ExcursionDao;
 import io.terence.myapplication.vacations.Vacation;
 import io.terence.myapplication.vacations.VacationDao;
 import kotlin.jvm.Volatile;
@@ -33,4 +34,6 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract VacationDao vacationDao();
+
+    public abstract ExcursionDao excursionDao();
 }

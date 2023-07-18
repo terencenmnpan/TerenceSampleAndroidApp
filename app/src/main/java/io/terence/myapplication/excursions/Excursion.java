@@ -1,4 +1,4 @@
-package io.terence.myapplication.vacations;
+package io.terence.myapplication.excursions;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -17,6 +17,8 @@ public class Excursion {
     @ColumnInfo(name = "title")
     private String title;
     private LocalDate date;
+
+    private int vacationId;
 
     @NonNull
     public int getId() {
@@ -41,5 +43,13 @@ public class Excursion {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public int getVacationId() {
+        return vacationId;
+    }
+
+    public void setVacationId(int vacationId) {
+        this.vacationId = vacationId;
     }
 }

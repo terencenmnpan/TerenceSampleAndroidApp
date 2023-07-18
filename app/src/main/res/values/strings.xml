@@ -16,4 +16,10 @@
     <string name="edit_vacation">Edit Vacation</string>
     <string name="new_vacation_header">New Vacation</string>
     <string name="editing_vacation">Editing Vacation</string>
+    <string name="excursion_name">Excursion Name</string>
+    <string name="excursion_date">Excursion Date</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="editing_excursion">Editing Excursion</string>
+    <string name="new_excursion">New Excursion</string>
 </resources>

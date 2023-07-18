@@ -5,10 +5,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity(tableName = "vacations")
-public class Vacation {
+public class Vacation implements Serializable {
     @PrimaryKey(autoGenerate=true)
     @NonNull
     @ColumnInfo(name = "id")

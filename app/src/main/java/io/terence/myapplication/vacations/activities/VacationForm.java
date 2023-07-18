@@ -8,14 +8,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.terence.myapplication.MainActivity;
 import io.terence.myapplication.R;
 import io.terence.myapplication.config.AppDatabase;
+import io.terence.myapplication.excursions.Excursion;
+import io.terence.myapplication.excursions.ExcursionViewAdapter;
+import io.terence.myapplication.excursions.activities.ExcursionForm;
 import io.terence.myapplication.vacations.Vacation;
 import io.terence.myapplication.vacations.VacationDao;
+import io.terence.myapplication.vacations.VacationViewAdapter;
+import io.terence.myapplication.vacations.VacationWithExcursions;
 
 public class VacationForm extends Activity {
     private VacationDao vacationDao;
@@ -29,6 +39,9 @@ public class VacationForm extends Activity {
     private Button deleteButton;
 
     private Vacation vacation;
+
+    private RecyclerView recyclerView;
+    private ExcursionViewAdapter excursionViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +79,10 @@ public class VacationForm extends Activity {
             deleteButton.setVisibility(View.INVISIBLE);
         }
         submitButton.setOnClickListener(v -> saveVacation());
+
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        loadTableData();
     }
 
     public void saveVacation(){
@@ -73,10 +90,10 @@ public class VacationForm extends Activity {
         if(hasErrors()){
             return;
         }
-        vacationName = findViewById(R.id.vacation_name);
-        vacationAccommodation = findViewById(R.id.vacation_accommodation);
-        vacationStartDate = findViewById(R.id.vacation_start_date);
-        vacationEndDate = findViewById(R.id.vacation_end_date);
+        //vacationName = findViewById(R.id.vacation_name);
+        //vacationAccommodation = findViewById(R.id.vacation_accommodation);
+        //vacationStartDate = findViewById(R.id.vacation_start_date);
+        //vacationEndDate = findViewById(R.id.vacation_end_date);
 
         vacation.setTitle(vacationName.getText().toString());
         vacation.setAccommodation(vacationAccommodation.getText().toString());
@@ -130,5 +147,35 @@ public class VacationForm extends Activity {
                 vacationAccommodation.getError() != null ||
                 vacationStartDate.getError() != null ||
                 vacationEndDate.getError() != null;
+    }
+
+
+
+
+    private void loadTableData() {
+
+        new Thread(() -> {
+            VacationWithExcursions vacationWithExcursions = vacationDao.getVacationWithExcursions(vacation.getId());
+
+            List<Excursion> excursions = vacationWithExcursions != null ? vacationWithExcursions.excursions :
+                    new ArrayList<>();
+            runOnUiThread(() -> {
+                excursionViewAdapter = new ExcursionViewAdapter(excursions, excursion -> {
+                    Intent intent =  new Intent(getApplicationContext(), ExcursionForm.class);
+                    intent.putExtra("editExcursionId", excursion.getId());
+                    startActivity(intent);
+                });
+                recyclerView.setAdapter(excursionViewAdapter);
+            });
+        }).start();
+    }
+    public void addExcursion(View view) {
+        validateVacation();
+        if(hasErrors()){
+            return;
+        }
+        Intent intent = new Intent(VacationForm.this, ExcursionForm.class);
+        intent.putExtra("vacationId", vacation.getId());
+        startActivity(intent);
     }
 }
