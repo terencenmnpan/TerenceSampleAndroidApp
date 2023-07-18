@@ -3,7 +3,6 @@ package io.terence.myapplication.vacations;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +13,11 @@ import io.terence.myapplication.R;
 
 public class VacationViewAdapter extends RecyclerView.Adapter<VacationViewHolder> {
 
-    private List<Vacation> vacations;
+    private final List<Vacation> vacations;
 
-    private final AdapterView.OnItemClickListener listener;
+    private final OnVacationClickListener listener;
 
-    public VacationViewAdapter(List<Vacation> vacations, AdapterView.OnItemClickListener listener) {
+    public VacationViewAdapter(List<Vacation> vacations, OnVacationClickListener listener) {
         this.vacations = vacations;
         this.listener = listener;
     }
@@ -34,7 +33,7 @@ public class VacationViewAdapter extends RecyclerView.Adapter<VacationViewHolder
     public void onBindViewHolder(@NonNull VacationViewHolder holder, int position) {
         Vacation vacation = vacations.get(position);
         holder.vacationViewName.setText(vacation.getTitle());
-
+        holder.bind(vacation, listener);
     }
 
     @Override
