@@ -4,26 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vacations.activities.NewVacation">
+    tools:context=".vacations.activities.VacationForm">
 
     <EditText
         android:id="@+id/vacation_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="61dp"
         android:ems="10"
         android:hint="@string/name_of_vacation"
         android:inputType="text"
-        android:text="@string/vacation_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_vacation_header"
+        app:layout_constraintTop_toBottomOf="@+id/edit_vacation_header"
         android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/vacation_end_date"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="15dp"
         android:ems="10"
@@ -36,7 +35,7 @@
     <EditText
         android:id="@+id/vacation_start_date"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="12dp"
         android:ems="10"
@@ -49,13 +48,12 @@
     <EditText
         android:id="@+id/vacation_accommodation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/name_of_accommodation"
         android:inputType="text"
-        android:text="@string/accommodation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vacation_name"
         android:importantForAutofill="no" />
@@ -64,19 +62,30 @@
         android:id="@+id/save_vacation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="13dp"
-        android:onClick="saveNewVacation"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="24dp"
+        android:onClick="saveVacation"
         android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vacation_end_date" />
 
+    <Button
+        android:id="@+id/delete_vacation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="24dp"
+        android:onClick="deleteVacation"
+        android:text="Delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vacation_end_date" />
+
     <TextView
-        android:id="@+id/new_vacation_header"
+        android:id="@+id/edit_vacation_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:text="@string/new_vacation"
+        android:text="@string/edit_vacation"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="137dp" />

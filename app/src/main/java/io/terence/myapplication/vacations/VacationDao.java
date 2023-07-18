@@ -5,6 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+import androidx.room.Upsert;
 
 import java.util.List;
 
@@ -12,6 +13,8 @@ import io.reactivex.Completable;
 
 @Dao
 public interface  VacationDao {
+    @Upsert
+    void upsert(Vacation entity);
     @Insert
     void insert(Vacation entity);
 
@@ -20,8 +23,6 @@ public interface  VacationDao {
 
     @Delete
     void delete(Vacation entity);
-    @Query("DELETE FROM vacations WHERE id = :id")
-    void deleteVacationById(int id);
     @Query("SELECT * FROM vacations")
     List<Vacation> getAllEntities();
     @Query("SELECT * FROM vacations WHERE id=:id")
