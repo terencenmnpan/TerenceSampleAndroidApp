@@ -20,6 +20,24 @@ public class Vacation implements Serializable {
     private String accommodation;
     private LocalDate startDate;
     private LocalDate endDate;
+    private boolean startAlert;
+    private boolean endAlert;
+
+    public boolean isStartAlert() {
+        return startAlert;
+    }
+
+    public void setStartAlert(boolean startAlert) {
+        this.startAlert = startAlert;
+    }
+
+    public boolean isEndAlert() {
+        return endAlert;
+    }
+
+    public void setEndAlert(boolean endAlert) {
+        this.endAlert = endAlert;
+    }
 
     @NonNull
     public int getId() {

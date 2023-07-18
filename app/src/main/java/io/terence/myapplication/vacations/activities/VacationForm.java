@@ -1,11 +1,13 @@
 package io.terence.myapplication.vacations.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,6 +45,12 @@ public class VacationForm extends Activity {
     private RecyclerView recyclerView;
     private ExcursionViewAdapter excursionViewAdapter;
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    private Switch startAlert;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    private Switch endAlert;
+
+    private Button shareBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +69,11 @@ public class VacationForm extends Activity {
         submitButton = findViewById(R.id.save_vacation);
         deleteButton = findViewById(R.id.delete_vacation);
 
+        startAlert = findViewById(R.id.start_alert);
+        endAlert = findViewById(R.id.end_alert);
+
+
+
         Intent intent = getIntent();
 
         int vacationId = intent.getIntExtra("editVacationId", -1);
@@ -71,6 +84,8 @@ public class VacationForm extends Activity {
             vacationAccommodation.setText(vacation.getAccommodation());
             vacationStartDate.setText(vacation.getStartDate().toString());
             vacationEndDate.setText(vacation.getEndDate().toString());
+            startAlert.setChecked(vacation.isStartAlert());
+            endAlert.setChecked(vacation.isEndAlert());
 
             deleteButton.setOnClickListener(v -> deleteVacation());
         } else {
@@ -94,7 +109,9 @@ public class VacationForm extends Activity {
         vacation.setTitle(vacationName.getText().toString());
         vacation.setAccommodation(vacationAccommodation.getText().toString());
         vacation.setStartDate(LocalDate.parse(vacationStartDate.getText().toString()));
-        vacation.setEndDate(LocalDate.parse(vacationStartDate.getText().toString()));
+        vacation.setEndDate(LocalDate.parse(vacationEndDate.getText().toString()));
+        vacation.setStartAlert(startAlert.isChecked());
+        vacation.setEndAlert(endAlert.isChecked());
         appDatabase.runInTransaction(() -> vacationDao.upsert(vacation));
         Intent intentApp = new Intent(VacationForm.this,
                 MainActivity.class);
@@ -173,4 +190,5 @@ public class VacationForm extends Activity {
         intent.putExtra("vacationId", vacation.getId());
         startActivity(intent);
     }
+
 }

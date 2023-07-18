@@ -10,27 +10,27 @@
         android:id="@+id/excursion_name"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="61dp"
         android:ems="10"
         android:hint="@string/excursion_name"
+        android:importantForAutofill="no"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_excursion_header"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_excursion_header" />
 
     <EditText
         android:id="@+id/excursion_date"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="@string/excursion_date"
+        android:importantForAutofill="no"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/excursion_name"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/excursion_name" />
     <Button
         android:id="@+id/save_excursion"
         android:layout_width="wrap_content"
@@ -60,4 +60,14 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="137dp" />
+
+    <Switch
+        android:id="@+id/date_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="227dp"
+        android:text="Alert"
+        app:layout_constraintStart_toEndOf="@+id/excursion_date"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

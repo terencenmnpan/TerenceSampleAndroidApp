@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.time.LocalDate;
@@ -32,6 +33,7 @@ public class ExcursionForm extends AppCompatActivity {
     private Button saveBtn;
     private Button deleteBtn;
     private Excursion excursion;
+    private Switch dateAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class ExcursionForm extends AppCompatActivity {
         excursionDate = findViewById(R.id.excursion_date);
         saveBtn = findViewById(R.id.save_excursion);
         deleteBtn = findViewById(R.id.delete_excursion);
+        dateAlert = findViewById(R.id.date_alert);
 
         Intent intent = getIntent();
 
@@ -59,6 +62,7 @@ public class ExcursionForm extends AppCompatActivity {
             header.setText(R.string.editing_excursion);
             excursionName.setText(excursion.getTitle());
             excursionDate.setText(excursion.getDate().toString());
+            dateAlert.setChecked(excursion.isDateAlert());
             deleteBtn.setOnClickListener(v -> deleteExcursion());
         } else {
             header.setText(R.string.new_excursion);
@@ -77,6 +81,7 @@ public class ExcursionForm extends AppCompatActivity {
         }
         excursion.setTitle(excursionName.getText().toString());
         excursion.setDate(LocalDate.parse(excursionDate.getText().toString()));
+        excursion.setDateAlert(dateAlert.isChecked());
         appDatabase.runInTransaction(() -> excursionDao.upsert(excursion));
         Intent intentApp = new Intent(ExcursionForm.this,
                 VacationForm.class);

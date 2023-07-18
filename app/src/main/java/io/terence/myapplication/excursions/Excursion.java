@@ -17,6 +17,15 @@ public class Excursion {
     @ColumnInfo(name = "title")
     private String title;
     private LocalDate date;
+    private boolean dateAlert;
+
+    public boolean isDateAlert() {
+        return dateAlert;
+    }
+
+    public void setDateAlert(boolean dateAlert) {
+        this.dateAlert = dateAlert;
+    }
 
     private int vacationId;
 
