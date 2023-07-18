@@ -90,17 +90,12 @@ public class VacationForm extends Activity {
         if(hasErrors()){
             return;
         }
-        //vacationName = findViewById(R.id.vacation_name);
-        //vacationAccommodation = findViewById(R.id.vacation_accommodation);
-        //vacationStartDate = findViewById(R.id.vacation_start_date);
-        //vacationEndDate = findViewById(R.id.vacation_end_date);
 
         vacation.setTitle(vacationName.getText().toString());
         vacation.setAccommodation(vacationAccommodation.getText().toString());
         vacation.setStartDate(LocalDate.parse(vacationStartDate.getText().toString()));
         vacation.setEndDate(LocalDate.parse(vacationStartDate.getText().toString()));
         appDatabase.runInTransaction(() -> vacationDao.upsert(vacation));
-        // doStuff
         Intent intentApp = new Intent(VacationForm.this,
                 MainActivity.class);
 
