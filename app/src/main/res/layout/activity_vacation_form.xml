@@ -132,4 +132,13 @@
         app:layout_constraintStart_toEndOf="@+id/vacation_end_date"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
+    <Button
+        android:id="@+id/share_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:onClick="shareVacation"
+        android:text="@string/share_vacation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

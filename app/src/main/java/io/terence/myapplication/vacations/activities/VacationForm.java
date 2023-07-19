@@ -191,4 +191,29 @@ public class VacationForm extends Activity {
         startActivity(intent);
     }
 
+
+    public void shareVacation(View view) {
+        String message = "I am taking a vacation: ";
+        message = message.concat(vacation.getTitle());
+        message = message.concat(" at " + vacation.getAccommodation() + ".");
+        message = message.concat(" from: " + vacation.getStartDate() + " ");
+        message = message.concat(" to: " + vacation.getEndDate() + ".");
+
+        VacationWithExcursions vacationWithExcursions =
+                vacationDao.getVacationWithExcursions(vacation.getId());
+        if (vacationWithExcursions != null && !vacationWithExcursions.excursions.isEmpty()) {
+            message = message.concat(System.getProperty("line.separator") + "With Excursions: ");
+            for (Excursion excursion : vacationWithExcursions.excursions) {
+                message = message.concat(System.getProperty("line.separator") + excursion.getTitle() + ": " + excursion.getDate());
+            }
+        }
+
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
+    }
 }
