@@ -92,6 +92,7 @@ public class VacationForm extends Activity {
             header.setText(R.string.new_vacation_header);
             vacation = new Vacation();
             deleteButton.setVisibility(View.INVISIBLE);
+            shareBtn.setVisibility(View.INVISIBLE);
         }
         submitButton.setOnClickListener(v -> saveVacation());
 
