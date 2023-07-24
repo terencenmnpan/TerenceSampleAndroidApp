@@ -72,7 +72,7 @@ public class VacationForm extends Activity {
         startAlert = findViewById(R.id.start_alert);
         endAlert = findViewById(R.id.end_alert);
 
-
+        shareBtn = findViewById(R.id.share_btn);
 
         Intent intent = getIntent();
 
