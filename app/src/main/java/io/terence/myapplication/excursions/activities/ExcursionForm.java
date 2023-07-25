@@ -93,6 +93,7 @@ public class ExcursionForm extends AppCompatActivity {
         appDatabase.runInTransaction(() -> excursionDao.delete(excursion));
         Intent intentApp = new Intent(ExcursionForm.this,
                 VacationForm.class);
+        intentApp.putExtra("editVacationId", excursion.getVacationId());
         ExcursionForm.this.startActivity(intentApp);
     }
 
@@ -107,15 +108,17 @@ public class ExcursionForm extends AppCompatActivity {
         }
         try{
             LocalDate.parse(excursionDate.getText().toString());
+
+            LocalDate excursionLocalDate = LocalDate.parse(excursionDate.getText().toString());
+            Vacation vacation = vacationDao.loadSingle(excursion.getVacationId());
+            if (excursionLocalDate.isBefore(vacation.getStartDate()) ||
+                    excursionLocalDate.isAfter(vacation.getEndDate())) {
+                excursionDate.setError("Date must be between Vacation Start and End Dates, " +
+                        vacation.getStartDate() + " - " + vacation.getEndDate());
+            }
+
         } catch (DateTimeParseException dateTimeParseException){
             excursionDate.setError("Format must be yyyy-mm-dd");
-        }
-
-        LocalDate excursionLocalDate = LocalDate.parse(excursionDate.getText().toString());
-        Vacation vacation = vacationDao.loadSingle(excursion.getVacationId());
-        if (excursionLocalDate.isBefore(vacation.getStartDate()) ||
-                excursionLocalDate.isAfter(vacation.getEndDate())) {
-            excursionDate.setError("Date must be between Vacation Start and End Dates");
         }
     }
 }

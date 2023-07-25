@@ -149,7 +149,7 @@ public class VacationForm extends Activity {
             LocalDate startDate = LocalDate.parse(vacationStartDate.getText().toString());
             LocalDate endDate = LocalDate.parse(vacationEndDate.getText().toString());
             if(startDate.isAfter(endDate)){
-                vacationStartDate.setError("Start Date must be before End Date");
+                vacationStartDate.setError("Start Date must be before End Date, " + vacationEndDate.getText());
             }
         } catch (DateTimeParseException ignored){
             //parsing errors handled before this block
